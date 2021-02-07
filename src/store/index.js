@@ -5,7 +5,6 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    counter:1000,
     student:[
       {name:'jake',age:18,subject:'math'},
       {name:'mike',age:18,subject:'english'},
@@ -17,11 +16,18 @@ export default new Vuex.Store({
     ]
   },
   getters:{
-    students(state){
-      return state.student
+    getStuNum(state){
+      return state.student.length
     }
   },
   mutations: {
+    addStudent(state,stu){
+      state.student.push(stu)
+    },
+    delstudent(state){
+      state.counter++
+      return state.student.shift()
+    }
   },
   actions: {
   },
