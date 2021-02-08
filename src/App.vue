@@ -1,7 +1,7 @@
 <template>
   <div id="app">
 
-    <el-table :data="student" border style="width:50%">
+    <el-table :data="student" border style="width:55%">
 
       <el-table-column type="index" label="学号" width="150">
       </el-table-column>
@@ -14,6 +14,7 @@
 
       <el-table-column prop="subject" label="专业" width="200">
       </el-table-column>
+
     </el-table>
       <h2>当前系统学生人数为:{{getStuNum}}人</h2>
 
@@ -28,7 +29,7 @@
          style="width:200px" /></el-form-item>
       <el-form-item label="专业"><el-input v-model="newStu.subject" placeholder="请输入专业" style="width:200px" /></el-form-item>
       <el-button type="primary" @click="addstu">添加学生信息</el-button>
-      <el-button type="primary">删除学生信息</el-button>
+      <el-button type="danger" @click="delstu">删除学生信息</el-button>
     </el-form>
   </div>
 </template>
@@ -54,11 +55,17 @@ export default {
     },
     delstu(){
       this.$store.commit('delstudent')
+      let child = this.$refs.eltable
+      console.log(child);
     }
   },
   computed:{
     ...mapState(['student']),
     ...mapGetters(['getStuNum'])
+  },
+  mounted(){
+    let parentTable = this.$refs.eltable
+    console.log(parentTable);
   }
 }
 </script>
