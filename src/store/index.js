@@ -24,9 +24,8 @@ export default new Vuex.Store({
     addStudent(state,stu){
       state.student.push(stu)
     },
-    delstudent(state){
-      state.counter++
-      return state.student.shift()
+    delstudent(state,id){
+      state.student.splice(id,1)
     }
   },
   actions: {
